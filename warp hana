@@ -1,99 +1,217 @@
-{  
-"route": {
-    "geoip": {
-      "path": "geo-assets\\sagernet-sing-geoip-geoip.db"
-    },
-    "geosite": {
-      "path": "geo-assets\\sagernet-sing-geosite-geosite.db"
-    },
-    "rules": [
-      {
-        "inbound": "dns-in",
-        "outbound": "dns-out"
-      },
-      {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "select"
-      }
-    ],
-    "auto_detect_interface": true,
-    "override_android_vpn": true
-  },
-  "outbounds": [
+{
+  "outbounds":   [
     {
-      "type": "selector",
-      "tag": "select",
-      "outbounds": [
-        "auto",
-        "IP->Iran, Yotube:iranperfume",
-        "IP->Main, Yotube:iranperfume"
+      "type": "wireguard",
+      "tag": "WarpInWarp ⭐️ § 0",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:88e3:a7a5:4d26:bf1b:fdbf/128"
       ],
-      "default": "auto"
-    },
-    {
-      "type": "urltest",
-      "tag": "auto",
-      "outbounds": [
-        "IP->Iran, Yotube:iranperfume",
-        "IP->Main, Yotube:iranperfume"
-      ],
-      "url": "http://cp.cloudflare.com/",
-      "interval": "10m0s"
+      "private_key": "EDpubN7Lk+GeHLH9d/TQC0TQ1qHO4YPWaLFZJ8UGimU=",
+      "server": "zEC2BwqCgYW5_6yzfqg_",
+      "server_port": 2506,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "Bu5q",
+      "mtu": 1330,
+      "fake_packets": "10-20",
+      "fake_packets_size": "10-20",
+      "fake_packets_delay": "1-2",
+      "fake_packets_mode": "m4"
     },
     {
       "type": "wireguard",
-      "tag": "IP->Iran, Yotube:iranperfume",
-      "local_address": [
-        "172.16.0.2/32",
-        "2606:4700:110:8c91:4063:21d0:7dd5:f218/128"
+      "tag": "Yotube:iranperfume 🇮🇷  § 1",
+      "detour": "WarpInWarp ⭐️ § 0",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:8523:a64f:1963:a1db:747e/128"
       ],
-      "private_key": "CBVIIWvXdLr4PbSrnm11ZJJ300IiPudRD4R62/IxV1g=",
-      "server": "162.159.192.23",
-      "server_port": 7156,
+      "private_key": "oJ3IpcIGyhYcXTDc0BXIPrw4k6o3K+R4ZVP4T17Vp3s=",
+      "server": "162.159.192.1",
+      "server_port": 864,
       "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "reserved": "AAAA",
-      "mtu": 1280,
-      "fake_packets": "5-10"
+      "reserved": "EH6A",
+      "mtu": 1280
     },
     {
       "type": "wireguard",
-      "tag": "IP->Main, Yotube:iranperfume",
-      "detour": "IP->Iran, Yotube:iranperfume",
-      "local_address": [
-        "172.16.0.2/32",
-        "2606:4700:110:8c15:3f90:ad2d:8810:77f3/128"
+      "tag": "Yotube:iranperfume 🇮🇷 § 2",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:865f:38a3:df0e:749d:ddde/128"
       ],
-      "private_key": "CCC/TQTc82ub9i8f37Rpix2v425Sv/mxTzvE/iKRMkw=",
-      "server": "162.159.192.23",
-      "server_port": 7156,
+      "private_key": "iGJs72xzSUR5QvF5SKx3LipEaj9Fxh0Qq7xLrFDMLVU=",
+      "server": "188.114.97.170",
+      "server_port": 3476,
       "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "reserved": "AAAA",
+      "reserved": "N1pm",
+      "mtu": 1330,
+      "fake_packets": "40-80",
+      "fake_packets_size": "40-100",
+      "fake_packets_delay": "4-8",
+      "fake_packets_mode": "m4"
+    },
+    {
+      "type": "wireguard",
+      "tag": "Yotube:iranperfume 🇩🇪 § 3",
+      "detour": "Yotube:iranperfume 🇮🇷 § 2",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:8aae:3728:d31:a1a5:d0b5/128"
+      ],
+      "private_key": "0PN37CgoyU5cjFly2NyhrSzAoNsFpWbqUSkAKqO37kQ=",
+      "server": "188.114.97.170",
+      "server_port": 3476,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "OZi9",
+      "mtu": 1280
+    },
+    {
+      "type": "wireguard",
+      "tag": "Yotube:iranperfume 🇮🇷 § 4",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:8f36:2df5:a973:c8d5:4511/128"
+      ],
+      "private_key": "KMeBFG6X1FcXtX3M3sas6sziBEwOh8KifWi84vAsSF0=",
+      "server": "DmC6bW7dsJELXzSQ92fd",
+      "server_port": 3476,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "TGp8",
+      "mtu": 1330,
+      "fake_packets": "1-3",
+      "fake_packets_size": "10-30",
+      "fake_packets_delay": "10-30",
+      "fake_packets_mode": "h04FA0A"
+    },
+    {
+      "type": "wireguard",
+      "tag": "Yotube:iranperfume 🇩🇪 § 5",
+      "detour": "Yotube:iranperfume 🇮🇷 § 4",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:8ace:3e3e:87d9:8a27:6f9a/128"
+      ],
+      "private_key": "qNc3+MBU8L/lIObHEUXN2uBz7kTIl7XW1h6qpoeuoEE=",
+      "server": "162.159.192.1",
+      "server_port": 3476,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "U2LH",
       "mtu": 1280,
-      "fake_packets": "5-10"
+      "fake_packets_mode": "h04FA0A"
     },
     {
-      "type": "dns",
-      "tag": "dns-out"
+      "type": "wireguard",
+      "tag": "m4 § 6",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:865f:38a3:df0e:749d:ddde/128"
+      ],
+      "private_key": "iGJs72xzSUR5QvF5SKx3LipEaj9Fxh0Qq7xLrFDMLVU=",
+      "server": "188.114.97.170",
+      "server_port": 878,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "N1pm",
+      "mtu": 1330,
+      "fake_packets": "40-80",
+      "fake_packets_size": "40-100",
+      "fake_packets_delay": "4-8",
+      "fake_packets_mode": "m4"
     },
     {
-      "type": "direct",
-      "tag": "direct"
+      "type": "wireguard",
+      "tag": "warp in warp § 7",
+      "detour": "m4 § 6",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:8aae:3728:d31:a1a5:d0b5/128"
+      ],
+      "private_key": "0PN37CgoyU5cjFly2NyhrSzAoNsFpWbqUSkAKqO37kQ=",
+      "server": "188.114.97.170",
+      "server_port": 864,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "OZi9",
+      "mtu": 1280
     },
     {
-      "type": "direct",
-      "tag": "bypass"
+      "type": "wireguard",
+      "tag": "LocalIP § 8",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:865f:38a3:df0e:749d:ddde/128"
+      ],
+      "private_key": "iGJs72xzSUR5QvF5SKx3LipEaj9Fxh0Qq7xLrFDMLVU=",
+      "server": "3dTiJwGhdtnpF3sNTvUI",
+      "server_port": 864,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "N1pm",
+      "mtu": 1330,
+      "fake_packets": "1-3",
+      "fake_packets_size": "10-30",
+      "fake_packets_delay": "10-30",
+      "fake_packets_mode": "m4"
     },
     {
-      "type": "block",
-      "tag": "block"
+      "type": "wireguard",
+      "tag": "WarpInWarp✅ § 9",
+      "detour": "LocalIP § 8",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:8aae:3728:d31:a1a5:d0b5/128"
+      ],
+      "private_key": "0PN37CgoyU5cjFly2NyhrSzAoNsFpWbqUSkAKqO37kQ=",
+      "server": "162.159.192.1",
+      "server_port": 864,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "OZi9",
+      "mtu": 1280
+    },
+    {
+      "type": "wireguard",
+      "tag": "Warp 🇮🇷 IP § 10",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:8aae:3728:d31:a1a5:d0b5/128"
+      ],
+      "private_key": "0PN37CgoyU5cjFly2NyhrSzAoNsFpWbqUSkAKqO37kQ=",
+      "server": "f_wUU6wXXMJHBUXctRxY",
+      "server_port": 928,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "OZi9",
+      "mtu": 1330
+    },
+    {
+      "type": "wireguard",
+      "tag": "Warp-IR § 11",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:8697:337:7078:16de:e4d2/128"
+      ],
+      "private_key": "mCyW144gb0IZNMVRMTsvnzRXh/d1yhde5pt1lOzX208=",
+      "server": "188.114.96.98",
+      "server_port": 928,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "dTe2",
+      "mtu": 1330,
+      "fake_packets": "10-20",
+      "fake_packets_size": "20-60",
+      "fake_packets_delay": "5-10",
+      "fake_packets_mode": "m4"
+    },
+    {
+      "type": "wireguard",
+      "tag": "Warp-IN-Warp § 12",
+      "detour": "Warp-IR § 11",
+      "local_address":       [
+        "172.16.0.2/24",
+        "2606:4700:110:88c8:6305:af3e:f56b:b097/128"
+      ],
+      "private_key": "QKXerG6Hg8kYngeqtya+Ywj5qA/0irzdWukZ7EBtalk=",
+      "server": "188.114.98.155",
+      "server_port": 928,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": "3lLn",
+      "mtu": 1280
     }
-  ]  
+  ]
 }
