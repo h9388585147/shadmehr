@@ -50,7 +50,7 @@
     },
     {
       "type": "wireguard",
-      "tag": "IP->Iran, Yotube:MisaHiro",
+      "tag": "IP->Iran, Yotube:iranperfume",
       "local_address": [
         "172.16.0.2/32",
         "2606:4700:110:8c91:4063:21d0:7dd5:f218/128"
@@ -65,8 +65,8 @@
     },
     {
       "type": "wireguard",
-      "tag": "IP->Main, Yotube:MisaHiro",
-      "detour": "IP->Iran, Yotube:MisaHiro",
+      "tag": "IP->Main, Yotube:iranperfume",
+      "detour": "IP->Iran, Yotube:iranperfume",
       "local_address": [
         "172.16.0.2/32",
         "2606:4700:110:8c15:3f90:ad2d:8810:77f3/128"
